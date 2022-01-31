@@ -1,3 +1,0 @@
-Este es el fichero número 4
-de los 4 que subiré en un mismo
-commit
