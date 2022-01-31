@@ -7,3 +7,6 @@ Estoy probando el VSCode
 Un segundo commit
 
 tercer cambio
+
+Ejercicio 4:
+![](Ejercicio2-img1.gif)
