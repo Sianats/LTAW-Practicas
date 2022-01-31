@@ -1,5 +1,0 @@
-Fichero temporal 
-que vamos a borrar
-para aprender a 
-eliminar ficheros
-en el repositorio...
