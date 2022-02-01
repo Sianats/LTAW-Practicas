@@ -1,0 +1,38 @@
+<!DOCTYPE urjc_ML SYSTEM "urjc_ml.dtd">
+<urjc_ml>
+  <!-- include URL URJC -->
+  <campus>
+    <nombre>Campus de Fuenlabrada</nombre>
+    <escuela>
+      <nombre>ETSI Telecomunicación</nombre>
+      <grado>
+        <nombre>Ingeniería en Sistemas Audiovisuales y Multimedia </nombre>
+        <asignatura>Laboratorio de Tecnologias Audiovisuales en la Web</asignatura>
+        <asignatura>Construcción de servicios y Aplicaciones Audiovisuales en Internet</asignatura>
+      </grado>
+    </escuela>
+  </campus>
+</urjc_ml>
+
+
+    a) Explica para qué sirve la primera línea del documento y por qué es necesaria
+        La primera línea sirve para indicar que es un documento, en este caso, del tipo urjc_ML. Es importante 
+
+    b) Si se omitiese esta línea, ¿Qué piensas que ocurriría?
+        Si esta línea desapareciera, no se sabría qué tipo de documento es y por lo tanto no funcionaría.
+
+    c) Sin conocer el contenido del fichero urjc_ml.dtd, ¿el documento es sintácticamente correcto?
+        No lo podemos saber ya que no podemos dar por hecho que las etiquetas que hemos usado estén declaradas o correctamente.
+
+    d) ¿Qué hace la tercera línea?
+        La tercera línea es un comentario. No se visualiza fuera del código ni modifica su funcionamiento. Solo son notas de usuario.
+
+    e) ¿Cuantas etiquetas de apertura hay? ¿Cuantas de cierre?
+        Hay 9 etiquetas de apertura y por lo tanto las mismas de cierre (si no se declararan la misma cantidad sería un error de sintaxis y saltaría un error).
+
+    f) Dibuja el diagrama de contenedores de este documento
+   
+
+    g) Dibuja la estructura en árbol que define este documento
+
+
