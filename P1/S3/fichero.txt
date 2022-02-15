@@ -1,0 +1,4 @@
+Este es mi fichero  
+de prueba para probar  
+la lectura a/síncrona.
+Fin del comunicado
