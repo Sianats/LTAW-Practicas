@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Comentario XML -->
+
+<!-- Comentario
+    con varias
+    lineas 
+-->
+
+<!-- Etiqueta raiz(optativo) -->
+<!DOCTYPE LTAW>
+
+<!-- etiqueta no definida -->
+<etiquetasindefinir atrib="oleole">
+
+</etiquetasindefinir>
+
+<!-- Etiquetas y subetiquetas -->
+<tienda>
+    <producto>
+        Producto 1
+    </producto>
+    <producto>
+        <subproducto>
+          Producto 2  
+        </subproducto>
+    </producto>
+</tienda>
+
+<!-- definir etiquetas -->
+
+<!DOCTYPE tienda [
+    <!ELEMENT tienda (#PCDATA)>
+]>
+
+<tienda>
+    es puro texto
+    pongo lo que quiero en
+    la etiqueta que 
+    acabo de crear
+</tienda>
+ 
+<!-- aquí especificas que en tienda SOLO puede haber 1 producto, si 
+pongo más de uno salta error -->
+<!DOCTYPE tienda [
+    <!ELEMENT tienda (producto)>
+    <!ELEMENT producto (#PCDATA)>
+]>
+
+<tienda>
+<producto>Producto 1 </producto>
+</tienda>
+
+<!-- Aquí especificas que puedes poner 1 o más productos (nunca 0) -->
+<!DOCTYPE tienda [
+    <!ELEMENT tienda (producto+)>
+    <!ELEMENT producto (#PCDATA)>
+]>
+
+<tienda>
+<producto>Producto 1 </producto>
+<producto> Producto 2</producto>
+</tienda>
+
+<!-- en mi tienda puede haber ninguno o varios productos -->
+<!DOCTYPE tienda [
+    <!ELEMENT tienda (producto*)>
+    <!ELEMENT producto (#PCDATA)>
+]>
+
+<tienda>
+<producto>Producto 1 </producto>
+<producto> Producto 2</producto>
+</tienda>
