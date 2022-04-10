@@ -1,7 +1,8 @@
 Este arbol representa la estructura del tipo de documento universidad, que está definido en el archivo llamado universidad.dtd. Los nombres de las etiquetas de cada elemento del árbol están escritos en los nodos. Estos nombres son válidos y se encuentra definidos dentro del documento DTD
 
     a) Escribe el documento en SGML que representa esa estructura
-
+        <!DOCTYPE Universidad SYSTEM "Universidad.dtd">
+        
         <Universidad>
             <Escuela>
                 <Nombre>"ETSI Telecomunicación"</nombre>
@@ -22,4 +23,7 @@ Este arbol representa la estructura del tipo de documento universidad, que está
         Hay 11 elementos contenedores(que contienen algo; sea texto, otros elementos contenedores...). En orden (arriba-abajo, izquierda-derecha) son: Universidad, Escuela, Nombre, Grado, Grado, Nombre, Asignatura, Asignatura, Asignatura, Nombre, Asignatura.
 
     c) ¿Cuantos elementos terminales hay? Indica sus valores
+        Hay 7 elementos terminales (que terminan, no derivan en nada. Los nombramos de izquierda a derecha):"ETSI Telecomunicación",  "Ingeniería en Sistemas Audiovisuales y Multimedia", "LTAW", "CSAAI", "ASA 2", "Ingeniería en Robótica Software", "AC".
+
     d) ¿Cuantos elementos hay en el nivel 3?. Escribe sus nombres
+        Hay 7 elementos (de izquiera a derecha): "ETSI Telecomunicación", Nombre, Asignatura, Asignatura, Asignatura, Nombre, Asignatura.

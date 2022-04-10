@@ -1,0 +1,11 @@
+[
+    {
+        "nombre": "Taza estándar",
+        "descripcion": "Taza clásica con capacidad 250ml",
+        "stock": 20
+    },
+    {
+        "nombre": "Pack vajilla",
+        "stock": 10
+    }
+]
