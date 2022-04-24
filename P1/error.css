@@ -1,0 +1,14 @@
+body{
+    background-color: #1923aa;
+    text-align: center;
+    background-image: url("nieve.gif");
+}
+
+.image{
+    width: 900px;
+}
+
+h4{
+    margin-left: 795px;
+    margin-top: -4px;
+}
