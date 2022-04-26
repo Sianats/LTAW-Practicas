@@ -1,7 +1,6 @@
 /*Estilo del encabezado principal*/
 h1 {
-    margin: 0px;
-    margin-left: 270px;
+    margin-left: 40%;
 }
 
 /*Estilo general del cuerpo*/
@@ -24,15 +23,20 @@ aside{
     width: 200px;
 }
 
+.cabecera{
+    background-color: #1923aa;
+    color:#1923aa;
+    width: 100%;
+    height: 60px;
+    margin-bottom: -20px;
+    text-align: right;
+}
+
 /*Estilo general de mi caja principal*/
 main{
-    margin: none;
-    padding-left: 10px;
-    background-size: 1400px;
-    background-position-y: 515mm;
-    background-position-x: 1800mm;
-    max-width: 200mm;
-    min-width: 130mm;
+    max-width: 250mm;
+    padding-block-start: 5%;
+    padding-left: 5%;
 }
 
 /*Vamos a probar a hacer el slider*/
