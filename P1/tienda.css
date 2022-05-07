@@ -3,6 +3,16 @@ h1 {
     margin-left: 40%;
 }
 
+h2 {
+    text-align: center;
+    margin-left: 50%;
+}
+
+h3 {
+    text-align: center;
+    margin-left: 25%;
+}
+
 /*Estilo general del cuerpo*/
 .cuerpo{
     display: flex;
