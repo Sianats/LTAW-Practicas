@@ -35,7 +35,7 @@
     background: white;
     padding: 15px;
   }
-  .estilo .img-container .favorite{
+  .estilo .favorite{
     position: absolute;
     bottom: 80px;
     right: 10px;
@@ -44,16 +44,23 @@
     height: 50px;
     width: 50px;
     cursor: pointer;
+    margin-bottom: 28px;
+    border: none;
   }
-  .estilo .img-container .favorite svg{
-    transform: translatey(14px);
+  .estilo .favorite svg{
+    transform: translate(13px, 13px)
   }
-  .estilo .img-container .favorite:hover{
+  .estilo .favorite:hover{
     background: red;
   }
-  .estilo .img-container .favorite:hover svg{
+  .estilo .favorite:hover svg{
     fill: white;
   }
+
+  .estilo .favorito:after{
+    background: red;
+  }
+  
   .estilo a{
     display: inline-block;
     margin-top: 2px;
