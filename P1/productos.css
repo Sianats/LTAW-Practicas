@@ -31,9 +31,11 @@
     position: absolute;
     top: 10px;
     left: 0;
+    margin-left: 38px;
+    margin-top: 20px;
     font-size: 20px;
     background: white;
-    padding: 15px;
+    padding: 10px;
   }
   .estilo .favorite{
     position: absolute;
