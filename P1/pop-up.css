@@ -145,6 +145,10 @@ h1,h2,h3,h4,h5,h6{
     opacity:.75
 }
 
+button{
+    width: 200px;
+}
+
 button.close{
     padding:0;
     background-color:transparent;
