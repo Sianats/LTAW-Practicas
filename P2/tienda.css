@@ -124,34 +124,11 @@ ul, ol {
     top:-52px;
     background-color: #1923aa;
 }
-  
-button{
-    width: 30px;
-    background-color: #1923aa;
-    outline:none;
-    /* border: none; */
+
+.display{
+    height: 25px;
 }
 
-.lupa {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.lupa .display {
-    visibility: hidden;
-}
-
-.lupa .display::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-
-}
-
-.lupa .show {
-    visibility: visible;
+table{
+    /* margin-left: 74% */
 }

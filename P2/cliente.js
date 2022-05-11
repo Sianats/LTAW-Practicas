@@ -2,7 +2,7 @@ console.log("Ejecutando Javascript...");
 
 
 //-- Elementos HTML para mostrar informacion
-const display1 = document.getElementById("display1");
+const disp = document.getElementById("disp");
 
 //-- Caja de busqueda
 const caja = document.getElementById("caja");
@@ -29,17 +29,17 @@ caja.oninput = () => {
                 console.log(productos);
 
                 //-- Borrar el resultado anterior
-                display1.innerHTML = "";
+                disp.innerHTML = "";
 
                 //--Recorrer los productos del objeto JSON
                 for (let i=0; i < productos.length; i++) {
 
                     //-- Añadir cada producto al párrafo de visualización
-                    display1.innerHTML += productos[i];
+                    disp.innerHTML += productos[i];
 
                     //-- Separamos los productos por ',''
                     if (i < productos.length-1) {
-                    display1.innerHTML += ', ';
+                    disp.innerHTML += ', ';
                     }
                 }
 
@@ -64,6 +64,6 @@ caja.oninput = () => {
       m.send();
       
     } else {
-        display1.innerHTML="";
+        disp.innerHTML="";
     }
 }

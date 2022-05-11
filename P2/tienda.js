@@ -1,13 +1,6 @@
 //-- Servidor JSON
 console.log("Ejecutando JS....")
 
-const mostrarMensaje = getElementById('mensaje');
-
-mostrarMensaje.onclick = () => {
-    var lupa = document.getElementById("mydisplay");
-    lupa.classList.toggle("show");
-} 
-
 const http = require('http');
 const fs = require('fs');
 const PUERTO = 9090;
