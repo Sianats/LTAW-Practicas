@@ -4,19 +4,72 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ejemplo 9</title>
+  <title>Whatsapp</title>
 
   <!-- Cargar la biblioteca Socket.IO. Nos la debe entregar el servidor -->
   <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="chat.css">
+  <link rel="stylesheet" href="usuario.css">
 
   <!-- Cliente que usa los Sockets.io-->
   <script src="client.js" defer></script>
+
 </head>
 
 <body>
-  <h2>Ejemplo 9: Mini-chat</h2>
-  <input type="text" placeholder="Escribe aquí los mensajes..." autocomplete="off" id="msg_entry">
-  <h3>Mensajes recibidos</h3>
-  <p id="display"></p>
+<table style="border-spacing:50px">
+    <tr> 
+        <td width="500px"> 
+            <div id= "divusuario">
+                <div id="login-box">
+                    <h1 id="us">Introduce tu usuario:</h1>
+                    <div class="form">
+                        <div class="item">
+                            <input type="text" placeholder="user name..." autocomplete="off" id="nick">
+                        </div>
+                    </div>
+                    <h1 id="cambio"></h1>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="container">
+                <div class="chat">
+                    <div class="chat-header">
+                        <div class="profile">
+                            <div class="left">
+                                <img src="img/atras.png" class="arrow" width="30px">
+                                <img src="img/URJC.png" class="pp" width="30px" style="background-color: white;">
+                                <h2>Grupo 4º ISAM</h2>
+                            </div>
+                            <div class="right">
+                                <img src="img/video.png" class="icon">
+                                <img src="img/telf.png" class="icon">
+                                <img src="img/opciones.png" class="icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-box">
+                        <div class="chat-r">
+                            <div class="sp"></div>
+                                <p id="display"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-footer">
+                        <img src="img/emoticonos.png" class="emo">
+                        <input type="text" placeholder="Type a message..." autocomplete="off" id="msg_entry" class="escribir">
+                        <div class="icons">
+                            <img src="img/docs.png">
+                            <img src="img/camara.png">
+                        </div>
+                        <img src="img/mic.png" class="mic">
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>	
 </body>
 </html>

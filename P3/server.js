@@ -4,7 +4,7 @@ const http = require('http');
 const express = require('express');
 const colors = require('colors');
 
-const PUERTO = 9090;
+const PUERTO = 9080;
 
 //-- Crear una nueva aplciacion web
 const app = express();
@@ -18,7 +18,7 @@ const io = new socketServer(server);
 //-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
 //-- Definir el punto de entrada principal de mi aplicación web
 app.get('/', (req, res) => {
-  res.send('Bienvenido a mi aplicación Web!!!' + '<p><a href="/public/chat.html">Test</a></p>');
+  res.send('Bienvenido a mi aplicación Web!!!' + '<div id= "divusuario"><h3>Introduce tu nombre de usuario:</h3><h3 id="cambio"></h3><input type="text" placeholder="Escribe aquí el nombre..." autocomplete="off" id="nick"></div>' +'<p><a href="/chat.html">Test</a></p>');
 });
 
 //-- Esto es necesario para que el servidor le envíe al cliente la

@@ -1,0 +1,50 @@
+body {
+    background-size: 120% auto;
+    background-repeat: no-repeat;
+}
+
+#login-box {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 15%;
+    text-align: center;
+    background: #036055;
+    padding: 20px 50px;
+    border-radius: 20px;
+}
+
+#login-box h1 {
+    color: white;
+}
+
+#login-box .form .item {
+    margin-top: 15px;
+}
+
+#login-box .form .item input {
+    width: 180px;
+    font-size: 18px;
+    border: 0;
+    border-bottom: 3px solid white;
+    padding: 5px 10px;
+    background: #036055;
+    color: #ffffff;
+}
+
+#login-box .form .item input[placeholder] {
+    color: white;
+}
+
+#login-box .form .item i {
+    font-size: 18px;
+    color: white;
+}
+
+#message-box {
+    color: white;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
