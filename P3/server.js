@@ -33,7 +33,7 @@ app.use(express.static('public'));
 io.on('connect', (socket) => {
   
   console.log('** NUEVA CONEXIÓN **'.yellow);
-
+  io.send('¡Bienvenido al chat de ISAM!');
   //-- Evento de desconexión
   socket.on('disconnect', function(){
     console.log('** CONEXIÓN TERMINADA **'.yellow);
