@@ -18,7 +18,8 @@ const io = new socketServer(server);
 //-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
 //-- Definir el punto de entrada principal de mi aplicación web
 app.get('/', (req, res) => {
-  res.send('Bienvenido a mi aplicación Web!!!' + '<div id= "divusuario"><h3>Introduce tu nombre de usuario:</h3><h3 id="cambio"></h3><input type="text" placeholder="Escribe aquí el nombre..." autocomplete="off" id="nick"></div>' +'<p><a href="/chat.html">Test</a></p>');
+  path = __dirname + '/public/chat.html';
+  res.sendFile(path);
 });
 
 //-- Esto es necesario para que el servidor le envíe al cliente la
@@ -33,10 +34,11 @@ app.use(express.static('public'));
 io.on('connect', (socket) => {
   
   console.log('** NUEVA CONEXIÓN **'.yellow);
-  io.send('¡Bienvenido al chat de ISAM!');
+  io.write('¡Bienvenido al chat de ISAM!');
   //-- Evento de desconexión
   socket.on('disconnect', function(){
     console.log('** CONEXIÓN TERMINADA **'.yellow);
+    io.send('Un usuario ha abandonado el chat');
   });  
 
   //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
