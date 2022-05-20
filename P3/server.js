@@ -31,8 +31,8 @@ app.use(express.static('public'));
 
 //------------------- GESTION SOCKETS IO
 //-- Evento: Nueva conexion recibida
+  let num = 0;
 io.on('connect', (socket) => {
-  var num = 0;
   console.log('** NUEVA CONEXIÓN **'.yellow);
   socket.write('¡Bienvenido al chat de ISAM!');
   num += 1;
@@ -44,13 +44,13 @@ io.on('connect', (socket) => {
   });  
 
   //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
-  socket.on("message", (msg, num)=> {
+  socket.on("message", (msg)=> {
     if (msg.includes('/help') && !msg.includes(' se ha unido</h5>')){
       socket.write('Los comandos disponibles son: <br> <strong>/help:</strong> Este mismo :) <br> <strong>/list:</strong> Devolverá el número de usuarios conectados <br> <strong>/hello:</strong> El servidor nos devolverá el saludo <br> <strong>/date:</strong> Nos devolverá la fecha');
     }else if(msg.includes('/hello') && !msg.includes(' se ha unido</h5>')){
       socket.write('¡Hola! Mucho ánimo con la carrera :)');
     }else if(msg.includes('/list') && !msg.includes(' se ha unido</h5>')){
-socket.write(num);
+      socket.write('Hay un total de ' + num + ' usuarios conectados');
     }else if(msg.includes('/date') && !msg.includes(' se ha unido</h5>')){
       const tiempoTranscurrido = Date.now();
       const hoy = new Date(tiempoTranscurrido);
