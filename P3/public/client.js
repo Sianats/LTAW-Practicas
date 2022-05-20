@@ -1,9 +1,8 @@
 const display = document.getElementById("display");
 const msg_entry = document.getElementById("msg_entry");
-const usuario = document.getElementById("nick");
+const usuario = document.getElementById("user");
 const x = document.getElementById("us");
 const userestablecido = document.getElementById("userestablecido");
-const notificacion = document.getElementById("notificacion");
 
 //-- Este sera el identificador del ususario por defecto 
 let User = "Anónimo";
@@ -19,6 +18,7 @@ socket.on("message", (msg)=>{
     display.innerHTML += '<p>' + msg + '</p>';
   }
 });
+
 
 // Te avisa de que otro está escribiendo
 msg_entry.oninput = () => {
@@ -42,7 +42,7 @@ usuario.onchange = () => {
     if (usuario.value )
     User = usuario.value;
     console.log("nombre usuario"+ usuario.value);
-    document.getElementById("nick").style.display = "none";
+    document.getElementById("user").style.display = "none";
     document.getElementById("us").style.display = "none";
     userestablecido.innerHTML = "Nombre de usuario:"+ ' ' + User; 
     socket.send('<h5 style="text-align: center">' + User + ' se ha unido</h5>');
