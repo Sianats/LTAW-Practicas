@@ -1,9 +1,5 @@
-body {
-    background-size: 120% auto;
-    background-repeat: no-repeat;
-}
-
-#login-box {
+/* Estilo de la caja general de introduccion de usuario */
+#box {
     width: 100%;
     height: auto;
     margin: 0 auto;
@@ -14,15 +10,19 @@ body {
     border-radius: 20px;
 }
 
-#login-box h1 {
+/* Estilo del titulo */
+#box h1 {
     color: white;
 }
 
-#login-box .form .item {
+/* Establezco un margen en el input para que
+se separe un poco del titulo */
+#box .form .item {
     margin-top: 15px;
 }
 
-#login-box .form .item input {
+/* Estilo del input donde escribes */
+#box .form .item input {
     width: 180px;
     font-size: 18px;
     border: 0;
@@ -32,15 +32,7 @@ body {
     color: #ffffff;
 }
 
-#login-box .form .item input[placeholder] {
-    color: white;
-}
-
-#login-box .form .item i {
-    font-size: 18px;
-    color: white;
-}
-
+/* Estilo de la caja donde se escribe el usuario */
 #message-box {
     color: white;
     position: fixed;
