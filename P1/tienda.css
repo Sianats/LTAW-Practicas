@@ -45,7 +45,7 @@ main{
     margin-top: 15px;
     overflow: hidden;
 }
-
+ /* Lo que hay dentro de la celda tiene animacion que no acaba */
 .slider ul {
     display: flex;
     padding: 0;
@@ -60,8 +60,11 @@ main{
 .slider img{
     width: 100%;
 }
-
+/* Establezco los cambios de fotos cada x tienpo */
 @keyframes cambio {
+    /* Del 0 al 20% del tiempo total de la animacion
+    (20s que he establecido arriba) el margen es 0,
+    por lo que se ve la primera foto */
     0% {margin-left: 0%;}
     20% {margin-left: 0%;}
 

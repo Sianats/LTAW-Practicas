@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
    if (myURL.pathname != "/"){
        page += "."+ myURL.pathname
      } else{
-         page += "tienda.html"
+         page += "calor.html"
      }
 
   fs.readFile(page, function(err, data) {
