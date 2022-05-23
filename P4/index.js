@@ -43,5 +43,11 @@ electron.ipcRenderer.on('numus', (event, msg) => {
 //-- Mensaje recibido del proceso MAIN
 electron.ipcRenderer.on('display', (event, msg) => {
     console.log("Recibido: " + msg);
-    display.innerHTML = msg;
+    if(!msg.includes(' se ha unido</h5>')){
+        display.innerHTML += '<p class="mess mess-r" style="text-align: right";>' + msg + '</p>';
+        } else {
+          // Si aparece ese mensaje en el texto, no declaro ninguna clase o estilo definido
+          //(es puramente estético. Solo es css, no tiene funcionalidad js).
+          display.innerHTML += '<p>' + msg + '</p>';
+        }
 });

@@ -83,7 +83,7 @@ io.on('connect', (socket) => {
         //-- Reenviarlo a todos los clientes conectados
         io.send(msg);
     }
-    win.webContents.send('msg', msg);
+    win.webContents.send('display', msg);
 });
 
 });
