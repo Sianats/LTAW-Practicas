@@ -42,6 +42,10 @@ identificador */
 	border-radius: 50%;
 	margin-left: 32px;
 }
+
+.perfil .pp .a{
+	background-color: white;
+}
 /* Estilo de la flecha de atrás */
 .perfil .atras {
 	display: inline-block;
@@ -74,7 +78,7 @@ en la zona del perfil de usuario */
 /* Establezco unos valores para el 'display',
 al que aquí llamaré chat-box */
 .chat-box {
-	background: url('../img/fondo.jpeg');
+	background: url('img/fondo.jpeg');
 	background-attachment: fixed;
 	padding-left: 20px;
 	overflow-y: scroll;
@@ -193,7 +197,37 @@ con sus estilos específicos para cada cosa */
     margin-left: 5px;
 }
 
-/* Estilo de la caja general de introduccion de usuario */
+#btn_test{
+	border-radius: 20px;
+	border: none;
+	background-color: #4CAF50; /* Green */
+    border: 1px solid green;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+}
+
+#btn_test:hover {
+    background-color: #3e8e41;
+}
+
+/* Estilo de la caja general de la información ip, versiones... */
+#box1{
+    width: 100%;
+    height: 700px;
+    margin: 0 auto;
+    margin-top: 15%;
+    background: #036055;
+    padding: 20px 50px;
+    border-radius: 20px; 
+    color: white;
+}
+
 #box {
     width: 100%;
     height: auto;
@@ -202,23 +236,12 @@ con sus estilos específicos para cada cosa */
     text-align: center;
     background: #036055;
     padding: 20px 50px;
+	color: white;
     border-radius: 20px;
 }
 
-/* Estilo del titulo */
-#box h1 {
-    color: white;
-}
-
-#box1{
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-    margin-top: 15%;
-    background: #036055;
-    padding: 20px 50px;
-    border-radius: 20px; 
-    color: white;
+#box1 .ppt{
+	color: #E2FFC7;
 }
 
 /* Establezco un margen en el input para que

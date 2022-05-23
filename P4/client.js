@@ -1,66 +1,64 @@
 //Establezco constantes que, gracias a su identificador, podré usar en mi archivo html
 const display = document.getElementById("display");
 const msg_entry = document.getElementById("msg_entry");
-const electron = require('electron');
-const ip = require('ip');
-
-const node = document.getElementById("node");
-const chrome = document.getElementById("chrome");
-const electron1 = document.getElementById("electron1");
-const url1 = document.getElementById("url");
-const info1 = document.getElementById("info1");
-const info2 = document.getElementById("info2");
-const info3 = document.getElementById("info3");
-const numus = document.getElementById("numus");
-const btn_test = document.getElementById("btn_test");
+const usuario = document.getElementById("user");
+const x = document.getElementById("us");
+const userestablecido = document.getElementById("userestablecido");
 
 //Declaro que el usuario se llamará 'Anónimo' siempre que no establezca otro nombre
-let port;
+let User = "Anónimo";
 // Pongo la notificación de escribiendo en falso, por defecto.
+let escribiendo = false;
 const socket = io();
 // Declaro el audio que voy a usar de tono de notificación
 let notif = new Audio('notificacion.mp3');
 
-node.textContent = process.versions.node;
-chrome.textContent = process.versions.chrome;
-electron1.textContent = process.versions.electron;
-info1.textContent = process.arch;
-info2.textContent = process.platform;
-info3.textContent = process.cwd();
-
 //Creo esta función que servirá para la estructura de los mensajes y que se vean en pantalla
 socket.on("message", (msg)=>{
   //Declaro que si el mensaje no incluye ese texto específico, la estructura sea así
-  display.innerHTML += '<p class="mess mess-r" style="text-align: right";>' + msg + '</p>'; 
-  electron.ipcRenderer.on('message', (event, msg) => {
-    display.innerHTML += '<p class="mess mess-r" style="text-align: right";>' + msg + '</p>';
-  })
+  if(!msg.includes(' se ha unido</h5>')){
+  display.innerHTML += '<p class="mess mess-r" style="text-align: right";>' + msg + '</p>';
+  } else {
+    // Si aparece ese mensaje en el texto, no declaro ninguna clase o estilo definido
+    //(es puramente estético. Solo es css, no tiene funcionalidad js).
+    display.innerHTML += '<p>' + msg + '</p>';
+  }
 });
+
+
+// Si se detectan cambios en la entrada de texto (escribir), el valor
+// de mi variable 'escribiendo' se pone en verdadero y salta la notificación
+msg_entry.oninput = () => {
+  if(!escribiendo){
+    escribiendo = true;
+    // Te avisa de que el usuario establecido está escribiendo
+    socket.send(User + ' esta escribiendo...');
+  };
+};
 
 // Al apretar el botón enter, se envía un mensaje al servidor 
 // y aparece en nuestro display
 msg_entry.onchange = () => {
   if (msg_entry.value)
-    socket.send(msg_entry.value);
+    socket.send(User + ": <br>" + msg_entry.value);
+    escribiendo = false;
   //-- Borrar el mensaje actual
   msg_entry.value = "";
   // Suena el sonido de notifiación
   notif.play();
-
 }
 
-btn_test.onclick = () => {
-  // Enviar mensaje al proceso principal
-  electron.ipcRenderer.invoke('test', "Este es un mensaje de prueba... ¡Funciona!");
+// Al cambiar el valor usuario...
+usuario.onchange = () => {
+    if (usuario.value )
+    // el usuario pasa a llamarse como lo has declarado tu
+    User = usuario.value;
+    console.log("nombre usuario"+ usuario.value);
+    // Desaparece el display que te permite cambiar el nombre
+    document.getElementById("user").style.display = "none";
+    document.getElementById("us").style.display = "none";
+    // Te confirma que has cambiado el usuario y te imprime el que has establecido
+    userestablecido.innerHTML = "Nombre de usuario:"+ ' ' + User; 
+    // Manda un mensaje al chat avisando de que te has unido
+    socket.send('<h5 style="text-align: center">' + User + ' se ha unido</h5>');
 }
-
-electron.ipcRenderer.on('users', (event, msg) => {
-  numus.textContent = msg;
-})
-
-electron.ipcRenderer.on('port', (event, msg) => {
-  port = msg;
-  // Cadena para construir la url del cliente
-  let url = "http://" + ip.address() + ":" + port + 'public/chat.html';
-  url1.textContent = url;
-})

@@ -4,6 +4,7 @@ const http = require('http');
 const express = require('express');
 const colors = require('colors');
 const electron = require ('electron');
+const ip = require('ip');
 
 const PUERTO = 9090;
 
@@ -21,7 +22,7 @@ const io = new socketServer(server);
 //-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
 //-- Definir el punto de entrada principal de mi aplicación web
 app.get('/', (req, res) => {
-  let path = __dirname + '/public/chat.html';
+  let path = __dirname + 'chat.html';
   res.sendFile(path);
 });
 
@@ -43,7 +44,7 @@ io.on('connect', (socket) => {
   socket.write('¡Bienvenido al chat de ISAM!');
   // El numero de usuarios aumenta 1 cada vez que alguien se conecta
   num += 1;
-  win.webContents.send('gente', num);
+  win.webContents.send('numus', num);
   //-- Evento de desconexión
   socket.on('disconnect', function(){
     console.log('** CONEXIÓN TERMINADA **'.yellow);
@@ -51,7 +52,7 @@ io.on('connect', (socket) => {
     io.send('Un usuario ha abandonado el chat');
     // El número de usuarios en el servidor disminuye 1
     num -= 1;
-    win.webContents.send('gente', num);
+    win.webContents.send('numus', num);
   });  
 
   //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
@@ -81,12 +82,8 @@ io.on('connect', (socket) => {
         console.log("Mensaje Recibido!: " + msg.blue);
         //-- Reenviarlo a todos los clientes conectados
         io.send(msg);
-        win.webContents.send('mensaje', msg);
     }
-
-    electron.ipcMain.handle('test', (event, msg) => {
-      io.emit('mensajeprueba', msg);
-    });
+    win.webContents.send('message', msg);
 });
 
 });
@@ -102,10 +99,23 @@ electron.app.on('ready', () => {
       }
   })
 
-  win.loadFile("chat.html");
+  win.loadFile("index.html");
   win.on('ready-to-show', () => {
       win.webContents.send('port', PUERTO);
   })
+
+  win.on('ready-to-show', () => {
+    win.webContents.send('ip', 'http://' + ip.address() + ':' + PUERTO + '/chat.html');
+  });
+
+});
+
+electron.ipcMain.handle('test', (event, msg) => {
+  console.log(msg);
+  //-- Enviar mensaje de prueba
+  io.send(msg);
+  win.webContents.send('msg', msg);
+
 });
 
 //-- Lanzar el servidor HTTP

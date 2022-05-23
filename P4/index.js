@@ -11,7 +11,8 @@ const info3 = document.getElementById("info3");
 const node = document.getElementById("node");
 const chrome = document.getElementById("chrome");
 const electron1 = document.getElementById("electron1");
-const print = document.getElementById("print");
+const ip1 = document.getElementById("ip1");
+const numus = document.getElementById("numus");
 
 //-- Acceder a la API de node para obtener la info
 //-- Sólo es posible si nos han dado permisos desde
@@ -23,17 +24,24 @@ node.textContent = process.versions.node;
 chrome.textContent = process.versions.chrome;
 electron1.textContent = process.versions.electron;
 
+electron.ipcRenderer.on('ip', (event, msg) => {
+    console.log("Recibido: " + msg);
+    ip1.textContent = msg;
+});
 
 btn_test.onclick = () => {
-    display.innerHTML += "TEST! ";
     console.log("Botón apretado!");
-
     //-- Enviar mensaje al proceso principal
-    electron.ipcRenderer.invoke('test', "MENSAJE DE PRUEBA: Boton apretado");
+    electron.ipcRenderer.invoke('test', "Boton de prueba... funciona :)");
 }
 
+electron.ipcRenderer.on('numus', (event, msg) => {
+    console.log("Usuarios: " + msg);
+    numus.textContent = msg;
+});
+
 //-- Mensaje recibido del proceso MAIN
-electron.ipcRenderer.on('print', (event, message) => {
-    console.log("Recibido: " + message);
-    print.textContent = message;
+electron.ipcRenderer.on('display', (event, msg) => {
+    console.log("Recibido: " + msg);
+    display.innerHTML = msg;
 });
