@@ -24,17 +24,20 @@ node.textContent = process.versions.node;
 chrome.textContent = process.versions.chrome;
 electron1.textContent = process.versions.electron;
 
+// Se muestra la url declarada en el main
 electron.ipcRenderer.on('ip', (event, msg) => {
     console.log("Recibido: " + msg);
     ip1.textContent = msg;
 });
 
+// Al pulsar en botón, aparece el mensaje
 btn_test.onclick = () => {
-    console.log("Botón apretado!");
+    console.log("Botón apretado");
     //-- Enviar mensaje al proceso principal
     electron.ipcRenderer.invoke('test', "Boton de prueba... funciona :)");
 }
 
+// Enseña el número de usuarios conectados
 electron.ipcRenderer.on('numus', (event, msg) => {
     console.log("Usuarios: " + msg);
     numus.textContent = msg;

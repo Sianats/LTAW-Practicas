@@ -3,6 +3,9 @@
     "description": "Aplicacion de chat en Electron",
     "version": "0.1.0",
     "main": "main.js",
+    "author": {
+        "name": "Sianat"
+    },
     "scripts": {
         "start": "electron .",
         "pack": "electron-builder --dir",

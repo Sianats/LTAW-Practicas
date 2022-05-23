@@ -197,6 +197,7 @@ con sus estilos específicos para cada cosa */
     margin-left: 5px;
 }
 
+/* Estilo del botón de prueba */
 #btn_test{
 	border-radius: 20px;
 	border: none;
@@ -212,6 +213,7 @@ con sus estilos específicos para cada cosa */
     float: left;
 }
 
+/* ASl pasar por encima, el botón se 'ilumina' (cambia de color, mi intención es crear un efecto óptico)*/
 #btn_test:hover {
     background-color: #3e8e41;
 }

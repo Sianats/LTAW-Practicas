@@ -83,6 +83,7 @@ io.on('connect', (socket) => {
         //-- Reenviarlo a todos los clientes conectados
         io.send(msg);
     }
+    // Se envía al display
     win.webContents.send('display', msg);
 });
 
@@ -98,17 +99,18 @@ electron.app.on('ready', () => {
           contextIsolation: false
       }
   })
-
   win.loadFile("index.html");
   win.on('ready-to-show', () => {
       win.webContents.send('port', PUERTO);
   })
 
+  // Se envía la url del usuario 
   win.on('ready-to-show', () => {
     win.webContents.send('ip', 'http://' + ip.address() + ':' + PUERTO + '/public/chat.html');
   });
 
 });
+
 
 electron.ipcMain.handle('test', (event, msg) => {
   console.log(msg);
