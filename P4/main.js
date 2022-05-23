@@ -22,7 +22,7 @@ const io = new socketServer(server);
 //-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
 //-- Definir el punto de entrada principal de mi aplicación web
 app.get('/', (req, res) => {
-  let path = __dirname + 'chat.html';
+  let path = __dirname + 'public/chat.html';
   res.sendFile(path);
 });
 
@@ -83,7 +83,7 @@ io.on('connect', (socket) => {
         //-- Reenviarlo a todos los clientes conectados
         io.send(msg);
     }
-    win.webContents.send('message', msg);
+    win.webContents.send('msg', msg);
 });
 
 });
@@ -105,7 +105,7 @@ electron.app.on('ready', () => {
   })
 
   win.on('ready-to-show', () => {
-    win.webContents.send('ip', 'http://' + ip.address() + ':' + PUERTO + '/chat.html');
+    win.webContents.send('ip', 'http://' + ip.address() + ':' + PUERTO + '/public/chat.html');
   });
 
 });
