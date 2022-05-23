@@ -3,11 +3,14 @@ const socketServer = require('socket.io').Server;
 const http = require('http');
 const express = require('express');
 const colors = require('colors');
+const electron = require ('electron');
 
 const PUERTO = 9090;
 
 //-- Crear una nueva aplciacion web
 const app = express();
+
+let win = null;
 
 //-- Crear un servidor, asosiaco a la App de express
 const server = http.Server(app);
@@ -40,6 +43,7 @@ io.on('connect', (socket) => {
   socket.write('¡Bienvenido al chat de ISAM!');
   // El numero de usuarios aumenta 1 cada vez que alguien se conecta
   num += 1;
+  win.webContents.send('gente', num);
   //-- Evento de desconexión
   socket.on('disconnect', function(){
     console.log('** CONEXIÓN TERMINADA **'.yellow);
@@ -47,6 +51,7 @@ io.on('connect', (socket) => {
     io.send('Un usuario ha abandonado el chat');
     // El número de usuarios en el servidor disminuye 1
     num -= 1;
+    win.webContents.send('gente', num);
   });  
 
   //-- Mensaje recibido: Reenviarlo a todos los clientes conectados
@@ -76,10 +81,31 @@ io.on('connect', (socket) => {
         console.log("Mensaje Recibido!: " + msg.blue);
         //-- Reenviarlo a todos los clientes conectados
         io.send(msg);
+        win.webContents.send('mensaje', msg);
     }
 
-  });
+    electron.ipcMain.handle('test', (event, msg) => {
+      io.emit('mensajeprueba', msg);
+    });
+});
 
+});
+
+electron.app.on('ready', () => {
+  win = new electron.BrowserWindow({
+      width: 600,
+      height: 600,
+      // permitir acceso al sistema
+      webPreferences: {
+          nodeIntegration: true,
+          contextIsolation: false
+      }
+  })
+
+  win.loadFile("chat.html");
+  win.on('ready-to-show', () => {
+      win.webContents.send('port', PUERTO);
+  })
 });
 
 //-- Lanzar el servidor HTTP
