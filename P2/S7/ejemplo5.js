@@ -2,7 +2,7 @@
 
 const http = require('http');
 const fs = require('fs');
-const PUERTO = 6000;
+const PUERTO = 8000;
 
 //-- Cargar la Página de error
 const ERROR = fs.readFileSync('error.html');

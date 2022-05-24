@@ -22,11 +22,17 @@ aside{
     text-align: justify;
     background-color: #1923aa;
     width: 200px;
+    height: 683px;
+}
+
+table{
+    margin-right: 0%;
+    margin-left: auto;
 }
 
 .cabecera{
     background-color: #1923aa;
-    color:#1923aa;
+    color:white;
     width: 100%;
     height: 60px;
     margin-bottom: -20px;
@@ -36,6 +42,8 @@ aside{
 /*Estilo general de mi caja principal*/
 main{
     max-width: 250mm;
+    margin-left: auto;
+    margin-right: auto;
     padding-block-start: 5%;
     padding-left: 5%;
 }
