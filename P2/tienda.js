@@ -14,19 +14,82 @@ const server = http.createServer((req, res) => {
 
   let page = "";
   let succesful = false;
+  let cookie1 = "Carrito=";
+  let nombre = "";
+
+  //-- Leer la Cookie recibida
+  const cookie = req.headers.cookie;
+
+  //-- Hay cookie
+  if (cookie) {
+    
+    //-- Obtener un array con todos los pares nombre-valor
+    let pares = cookie.split(";");
+
+    //-- Recorrer todos los pares nombre-valor
+    pares.forEach((element, index) => {
+
+      //-- Obtener los nombres y valores por separado
+      let [ok, valor] = element.split('=');
+
+      //-- Leer el usuario
+      //-- Solo si el nombre es 'User'
+      if (ok.trim() === 'User') {
+        nombre = valor;
+      } else if(ok.trim() === 'Carrito') {
+        cookie1 = element;
+      }
+    });
+  }
 
   //Se llama a la página principal por defecto
   if(myURL.pathname == '/procesar'){
-   var nombre=  myURL.searchParams.get('nombre');
-   
+   nombre=  myURL.searchParams.get('nombre');
    if( nombre == productos["Usuario"][0]["User"] || nombre == productos["Usuario"][1]["User"]){
       res.setHeader('Set-Cookie', 'User=' + nombre);
       page = "calor.html";
       succesful = true;
    }
-  }else if(myURL.pathname == '/'){
+  }else if(myURL.pathname == '/poner-freidora'){
+    if(nombre){
+      cookie1 += "freidora-";
+      res.setHeader('Set-Cookie',cookie1);
+      page = "calor.html";
+    }
+  }else if(myURL.pathname == '/poner-frytop'){
+    if(nombre){
+      cookie1 += "frytop-";
+      res.setHeader('Set-Cookie',cookie1);
+      page = "calor.html";
+    }
+  }else if(myURL.pathname == '/poner-conveccion'){
+    if(nombre){
+      cookie1 += "conveccion-";
+      res.setHeader('Set-Cookie',cookie1);
+      page = "calor.html";
+    }
+  }else if(myURL.pathname == '/poner-pizza'){
+    if(nombre){
+      cookie1 += "pizza-";
+      res.setHeader('Set-Cookie',cookie1);
+      page = "calor.html";
+    }
+  }else if(myURL.pathname == '/poner-mixto'){
+    if(nombre){
+      cookie1 += "mixto-";
+      res.setHeader('Set-Cookie',cookie1);
+      page = "calor.html";
+    }
+  }else if(myURL.pathname == '/poner-cuecepasta'){
+    if(nombre){
+      cookie1 += "cuecepasta-";
+      res.setHeader('Set-Cookie',cookie1);
+      page = "calor.html";
+    }
+  }
+  else if(myURL.pathname == '/'){
       page = 'calor.html';
-  }else {
+  } else {
     page = myURL.pathname.slice(1);
   }
 

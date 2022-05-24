@@ -71,7 +71,8 @@ section{
   background: red;
 }
   
-.estilo a{
+.estilo .a{
+  font-family: arial;
   display: inline-block;
   margin-top: 2px;
   text-decoration: none;
@@ -81,8 +82,8 @@ section{
   border: 1px solid black;
 }
 
-.estilo a:hover{
+.estilo .a:hover{
   color: black;
-  background-color: transparent;
-  border: 1px solid black;
+  background-color: #27282b;
+  border: 1px solid #27282b;
 }

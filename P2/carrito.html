@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset = "utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <!-- Estilos -->
+        <link rel = "stylesheet" href="tienda.css">
+        <link rel="stylesheet" href="usuario.css">
+        <!-- Fuentes que voy a utilizar -->
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,600,700,800,900" rel="stylesheet">
+        <!-- Archivos Js (no todos son archivos originales) -->
+        <script src="cliente.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        
+
+        <link rel="icon" href="fotos/climator.png" width="40px">
+
+        <title>Climator Ibiza</title>
+
+        <h6>
+            <a href="tienda.html"><img src="fotos/25aniversario.png" alt="logo"  ;=""></a>
+        </h6>
+    </head>
+
+    <body>
+        <div class="cabecera">
+            <br>
+            <h1 id="userestablecido"></h1>
+            <table>
+                <tr>
+                    <td><a href="error.html"><img src="fotos/carrito.png" alt="" width="30px" ;="" ></a> </td>                
+                    <td><a href="login.html"><img src="fotos/usuario.png" alt="" width="30px" ;=""></a> </td>
+                    <td>
+                        
+                        <input type="text" id="disp" class="display"><br>
+                        
+                    </td>
+                    <td><img src="fotos/lupa.png" alt=""  ;="" width="30px"></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr><span id="caja" style="color:black"></span></tr>
+            </table>
+        </div>
+        <div class="cuerpo">
+            <aside>
+                <div id="header">
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="">Productos➤<br>________________________</a>
+                                <ul>
+                                    <li><a href="calor.html">Calor</a></li>
+                                    <li><a href="frio.html">Frío</a></li>
+                                </ul>
+                            </li>
+                            <li ><a href="">Acerca de➤<br>________________________</a>
+                                <ul style="margin-top:-16px;">
+                                    <li><a href="legal.html">Aviso legal</a></li>
+                                    <li><a href="cookies.html">Política de cookies</a></li>
+                                    <li><a href="privacidad.html">Política de privacidad</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contacto.html">Contacto<br>________________________</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+
+            <main>
+                <form action="/comprar" method="get">
+                    <div class="item">
+                    <input class="pepa" type="text" placeholder="numero tarjeta..." autocomplete="off" name="tarjeta">
+                    <input class="pepa" type="text" placeholder="address..." autocomplete="off" name="direccion">
+                    </div>
+                    <input class="a" type="submit" value='Comprar' style="color:white;">
+                    </input>
+                </form> 
+            </main>
+        </div>
+    </body>
+</html>
