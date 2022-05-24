@@ -16,6 +16,7 @@ const server = http.createServer((req, res) => {
   let succesful = false;
   let cookie1 = "Carrito=";
   let nombre = "";
+  let carro = [];
 
   //-- Leer la Cookie recibida
   const cookie = req.headers.cookie;
@@ -38,6 +39,8 @@ const server = http.createServer((req, res) => {
         nombre = valor;
       } else if(ok.trim() === 'Carrito') {
         cookie1 = element;
+        carro = valor.split('-');
+        carro.pop();
       }
     });
   }
@@ -52,41 +55,61 @@ const server = http.createServer((req, res) => {
    }
   }else if(myURL.pathname == '/poner-freidora'){
     if(nombre){
-      cookie1 += "freidora-";
+      cookie1 += "Freidora-";
       res.setHeader('Set-Cookie',cookie1);
       page = "calor.html";
     }
   }else if(myURL.pathname == '/poner-frytop'){
     if(nombre){
-      cookie1 += "frytop-";
+      cookie1 += "Frytop-";
       res.setHeader('Set-Cookie',cookie1);
       page = "calor.html";
     }
   }else if(myURL.pathname == '/poner-conveccion'){
     if(nombre){
-      cookie1 += "conveccion-";
+      cookie1 += "Conveccion-";
       res.setHeader('Set-Cookie',cookie1);
       page = "calor.html";
     }
   }else if(myURL.pathname == '/poner-pizza'){
     if(nombre){
-      cookie1 += "pizza-";
+      cookie1 += "Pizza-";
       res.setHeader('Set-Cookie',cookie1);
       page = "calor.html";
     }
   }else if(myURL.pathname == '/poner-mixto'){
     if(nombre){
-      cookie1 += "mixto-";
+      cookie1 += "Mixto-";
       res.setHeader('Set-Cookie',cookie1);
       page = "calor.html";
     }
   }else if(myURL.pathname == '/poner-cuecepasta'){
     if(nombre){
-      cookie1 += "cuecepasta-";
+      cookie1 += "Cuecepasta-";
       res.setHeader('Set-Cookie',cookie1);
       page = "calor.html";
     }
-  }
+  }else if(myURL.pathname == '/comprar'){
+    if(nombre){
+      const FICHERO_JSON_OUT = "productos.json";
+      direc =  myURL.searchParams.get('direccion');
+      card =  myURL.searchParams.get('tarjeta');
+
+      // productos["Pedidos"]["User"] = nombre;
+      // productos["Pedidos"]["Direccion"] = direc;
+      // productos["Pedidos"]["Card"] = card;
+      // productos["Pedidos"]["Producto"] = cookie1;
+
+      var pf = {"User": nombre, "Direccion": direc, "Card": card, "Producto": cookie1};
+      productos["Pedidos"].push(pf);
+      //-- Convertir la variable a cadena JSON
+      let myJSON = JSON.stringify(productos);
+
+      //-- Guardarla en el fichero destino
+      fs.writeFileSync(FICHERO_JSON_OUT, myJSON);
+      page = "comprado.html";
+    }
+  } 
   else if(myURL.pathname == '/'){
       page = 'calor.html';
   } else {
@@ -116,8 +139,18 @@ const server = http.createServer((req, res) => {
     } else if(page.includes('.gif')){
       res.setHeader('Content-Type', 'image/gif');
     }
-if (succesful == true){
+
+    if (succesful == true){
           data = data.toString().replace('<a href="login.html"><img src="fotos/usuario.png" alt="" width="30px" ;=""></a>', nombre);
+    } 
+
+    if(page == 'carrito.html' || page == 'comprado.html'){
+      let resumen = '';
+      carro.forEach((p) => {
+        resumen += p + '<br>';
+      })
+      resumen += '';
+      data = data.toString().replace('Aún no hay nada añadido al carrito :(', resumen);
     } 
     res.write(data);
     res.end();
